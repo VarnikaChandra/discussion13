@@ -11,12 +11,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const images = document.querySelectorAll('.thumbnail');
 
     images.forEach(function(img) {
-        img.addEventListener('mouseenter', function() {
+        console.log("entered loop");
+        img.addEventListener('mouseenter', function(){
             console.log(img.alt); // Better to log the alt text, which is actually useful
             img.setAttribute('title', img.alt);
         });
 
-        img.addEventListener('mouseleave', function() {
+        img.addEventListener('mouseleave', function(){
             img.removeAttribute('title');
         });
     });
