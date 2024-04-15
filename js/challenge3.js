@@ -8,19 +8,20 @@ window.addEventListener("load",function(){//load event listener
     alert(document.querySelectorAll('figcaption')[1].innerHTML);
 });
 document.addEventListener("DOMContentLoaded", function() {
-    const img = document.querySelector('.thumbnail'); // Select the first thumbnail
+    const images = document.querySelectorAll('.thumbnail');
 
-    if (img) { // Check if the image exists
+    images.forEach(function(img) {
         img.addEventListener('mouseenter', function() {
-            console.log(img.innerHTML); // This will generally be empty as <img> elements do not contain inner HTML
-            img.setAttribute('title', img.alt); // Sets the title to the alt attribute of the img
+            console.log(img.alt); // Better to log the alt text, which is actually useful
+            img.setAttribute('title', img.alt);
         });
 
         img.addEventListener('mouseleave', function() {
-            img.removeAttribute('title'); // Removes the title attribute on mouse leave
+            img.removeAttribute('title');
         });
-    }
+    });
 });
+
 //https://www.w3schools.com/jsref/dom_obj_event.asp
 //variable:
 // 
