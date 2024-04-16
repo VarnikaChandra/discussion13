@@ -7,18 +7,26 @@ window.addEventListener("load",function(){//load event listener
     //console.log(document.querySelectorAll('figcaption'));//for all matching queries 
     alert(document.querySelectorAll('figcaption')[1].innerHTML);
 });
-document.addEventListener("DOMContentLoaded", function() {
-    const images = document.querySelectorAll('.thumbnail');
+document.addEventListener("DOMContentLoaded", function() {//dom load
+    let images = document.querySelectorAll('.thumbnail');//html class thumbnail
+    let display = document.getElementById('display');//find an id that matches
 
-    images.forEach(function(img) {
-        console.log("entered loop");
-        img.addEventListener('mouseenter', function(){
-            console.log(img.alt); // Better to log the alt text, which is actually useful
-            img.setAttribute('title', img.alt);
+    images.forEach(function(image) {//loop through the images variable which is those with .thumbnail
+        image.addEventListener('mouseenter', function() {
+            display.style.backgroundImage = `url('${image.src}')`;//set the displays background image as hovered image
+            display.textContent = image.alt;//set the text of it to the alt image text
+            display.style.color = '#FFFFFF'; // Ensure the text color is white
+            display.style.fontSize = '150%'; // Increase font size for visibility
+            display.style.justifyContent = 'center'; // Center the text horizontally
+            display.style.alignItems = 'center'; // Center the text vertically
+            display.style.display = 'flex'; // Use flexbox for centering text
+            display.style.backgroundSize = 'cover'; // Cover the entire area of display
         });
 
-        img.addEventListener('mouseleave', function(){
-            img.removeAttribute('title');
+        image.addEventListener('mouseleave', function() {
+            display.style.backgroundImage = 'none';
+            display.textContent = 'Hover over an image below to display the image and the alt text.';
+            display.style.color = '#FFFFFF'; 
         });
     });
 });
